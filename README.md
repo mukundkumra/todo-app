@@ -31,7 +31,7 @@ Before running the app, you need to set up MongoDB and configure the necessary e
 
 ## Install Dependencies
 
-Open a terminal using Git Bash, navigate first to the `todo-back-end/` directory, followed by the `todo-front-end` directory, then proceed to install the project dependencies:
+Open a terminal using Git Bash, navigate first to the `todo-back-end/` directory, followed by the `todo-front-end/` directory, then proceed to install the project dependencies:
 
    ```bash
    npm install
