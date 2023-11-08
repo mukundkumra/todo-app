@@ -29,6 +29,14 @@ Before running the app, you need to set up MongoDB and configure the necessary e
 
 2. Make sure that your MongoDB cloud cluster is deployed.
 
+## Install Dependencies
+
+Open a terminal using Git Bash, navigate first to the `todo-back-end/` directory, followed by the `todo-front-end/` directory, then proceed to install the project dependencies:
+
+   ```bash
+   npm install
+   ```
+
 ## How to Run the App
 
 1. Open two separate terminals using Git Bash in VSCode.
