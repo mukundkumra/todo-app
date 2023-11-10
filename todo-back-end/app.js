@@ -61,27 +61,16 @@ app.post("/login", async (req, res) => {
 
 const itemsSchema = new mongoose.Schema ({
     task: String,
-    username: String
+    username: String,
+    status: String
 });
 
 const Item = mongoose.model("Item", itemsSchema);
 
-const Complete = mongoose.model("Complete", itemsSchema);
-
-app.get("/api/tasks", async (req, res) => {
-  try {
-    const items = await Item.find({});
-    res.json(items);
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Internal Server Error");
-  }
-});
-
 app.get("/api/tasks/:username", async (req, res) => {
   try {
     const user = req.params.username; 
-    const items = await Item.find({ username: user});
+    const items = await Item.find({ username: user, status: "pending"});
 
     res.json(items);
   } catch (err) {
@@ -94,7 +83,7 @@ app.post("/api/tasks/:username", async (req, res) => {
   try {
     const itemName = req.body.newItem;
     const user = req.params.username; 
-    const newTask = new Item({ task: itemName, username: user });
+    const newTask = new Item({ task: itemName, username: user, status: "pending" });
     await newTask.save();
     res.sendStatus(201); // Created
   } catch (err) {
@@ -115,14 +104,10 @@ app.put("/api/tasks/:id", async (req, res) => {
   }
 });
 
-
 app.delete("/api/tasks/:id", async (req, res) => {
   try {
     const checkedItemID = req.params.id;
-    const completeTaskContent = await Item.findById(checkedItemID);
-    const completeTask = new Complete({ task: completeTaskContent.task, username: completeTaskContent.username});
-    await completeTask.save();
-    await Item.findByIdAndRemove(checkedItemID);
+    await Item.findByIdAndUpdate(checkedItemID, { status: "completed" });
     res.sendStatus(200); // OK
     console.log("Successfully moved the task to completed tasks");
   } catch (err) {
@@ -134,7 +119,7 @@ app.delete("/api/tasks/:id", async (req, res) => {
 app.get("/api/completed-tasks/:username", async (req, res) => {
   try {
     const user = req.params.username;
-    const completedTasks = await Complete.find({username: user});
+    const completedTasks = await Item.find({username: user, status: "completed"});
     if (completedTasks.length === 0) {
       console.log('Tasks yet to be completed')
     } else {
@@ -149,7 +134,7 @@ app.get("/api/completed-tasks/:username", async (req, res) => {
 app.delete("/api/completed-tasks/:id", async (req, res) => {
   try {
     const checkedItemID = req.params.id;
-    await Complete.findByIdAndRemove(checkedItemID);
+    await Item.findByIdAndRemove(checkedItemID);
     res.sendStatus(200); // OK
     console.log("Cleared Completed Task");
   } catch (err) {
@@ -161,7 +146,7 @@ app.delete("/api/completed-tasks/:id", async (req, res) => {
 app.delete("/api/completed-tasks/:username/all", async (req, res) => {
   try {
     const user = req.params.username;
-    await Complete.deleteMany({username: user}); // Delete all completed tasks
+    await Item.deleteMany({username: user, status: "completed"}); // Delete all completed tasks
     res.sendStatus(200); // OK
     console.log("Cleared all completed tasks");
   } catch (err) {

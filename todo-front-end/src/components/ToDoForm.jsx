@@ -12,6 +12,7 @@ function ToDoForm() {
     e.preventDefault();
     await axios.post(`/api/tasks/${username}`, { newItem: inputText, user: username }).then(response => {
       setInputText('');
+      window.location.reload();
     }).catch(error => {
       console.error(error);
     });
@@ -26,6 +27,7 @@ function ToDoForm() {
           placeholder="New Item"
           autoComplete="off"
           value={inputText}
+          required
           onChange={e => setInputText(e.target.value)}
         />
         <Fab color='secondary' className='add' type="submit"><AddIcon /></Fab>

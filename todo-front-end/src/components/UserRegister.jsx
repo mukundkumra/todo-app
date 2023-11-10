@@ -41,12 +41,13 @@ function UserRegister(){
           <tbody>
             <tr>
             <td><label htmlFor="username">Username</label></td>
-            <td><input onChange={handleChange} id="username" name="username" value={user.username} autoComplete="off"/></td>
+            <td><input required onChange={handleChange} id="username" name="username" value={user.username} autoComplete="off"/></td>
           </tr>
           <tr>
             <td><label htmlFor="password">Password</label></td>
             <td>
               <input 
+                required
                 onChange={handleChange} 
                 type="password" 
                 id="password" 

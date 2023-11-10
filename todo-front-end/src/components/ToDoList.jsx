@@ -7,7 +7,7 @@ import axios from 'axios';
 import { useParams } from "react-router-dom";
 
 function ToDoList() {
-    const { username } = useParams();
+  const { username } = useParams();
   const [tasks, setTasks] = useState([]);
   const [editingTask, setEditingTask] = useState('');
   const [updatedText, setUpdatedText] = useState('');
@@ -20,7 +20,7 @@ function ToDoList() {
       .catch(error => {
         console.error(error);
       });
-  });
+  }, [username]);
 
   const handleTaskDelete = (taskId) => {
     axios.delete(`/api/tasks/${taskId}`)

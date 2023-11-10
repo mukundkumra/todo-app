@@ -16,7 +16,7 @@ function CompletedList() {
       .catch(error => {
         console.error(error);
       });
-  });
+  }, [username]);
 
   const handleTaskDelete = (taskId) => {
     axios.delete(`/api/completed-tasks/${taskId}`)
