@@ -1,0 +1,146 @@
+html {
+    background-color: #E4E9FD;
+    font-family: 'century gothic';
+}
+
+h1 {
+    color: #fff;
+}
+
+.heading {
+    background-color: #A683E3;
+    text-align: center;
+}
+
+.heading h1 {
+    padding: 10px;;
+}
+
+.home-container{
+    text-align: center;
+}
+
+.home-container a {
+    padding: 10px;
+    font-weight: bold;
+    font-family: "Century Gothic";
+    margin: 20px 10px 0;
+}
+
+.form-container {
+    padding: 10px;
+}
+
+.register-form {
+    max-width: 500px;
+    padding: 10px;
+    background: #A683E3;
+    margin: 5px auto;
+}
+
+table {
+    margin: 5px auto;
+}
+
+tbody {
+    margin: 5px;
+}
+
+td {
+    padding: 10px;
+}
+
+.register-submit {
+    text-align: center;
+}
+
+.register-submit button {
+    font-family: "Century Gothic";
+    font-weight: bold;
+}
+
+.item {
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #F1F1F1;
+    margin: 0 auto;
+    background: #fff;
+    width: 500px;
+}
+
+.add-item {
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    margin: 5px auto 20px;
+    background: #fff;
+    width: 350px;
+    padding: 5px 10px;
+}
+
+.add-item button {
+    margin-left: 20px;
+}
+
+.completed-item {
+    width: 400px;
+    justify-content: center;
+}
+
+.clear {
+    margin: 20px auto 0;
+}
+
+input[type="checkbox"] {
+    margin: 20px;
+}
+
+input[type="checkbox"]:checked+p {
+    text-decoration: line-through;
+    text-decoration-color: #A683E3;
+}
+
+p {
+    margin: 0;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: 200;
+    color: #00204a;
+    display: inline;
+}
+
+
+div.item button {
+    color: #fff;
+    margin-left: 20px;
+}
+
+input[type="text"] {
+    text-align: center;
+    height: 60px;
+    top: 10px;
+    border: none;
+    background: transparent;
+    font-size: 20px;
+    font-weight: 200;
+    width: 270px;
+    font-family: "Century Gothic";
+}
+
+input[type="text"]:focus {
+    outline: none;
+    box-shadow: inset 0 -3px 0 0 #A683E3;
+}
+
+::placeholder {
+    color: grey;
+    opacity: 1;
+}
+
+footer {
+    color: white;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    font-weight: 600;
+}
